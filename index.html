@@ -201,7 +201,7 @@
             <h2>加入服务器</h2>
             <div class="join-content">
                 <div class="join-info">
-                    <h3>服务器信息</h3>
+                    <h3>服务器地址</h3>
                     <p>可以尝试点击<a href="minecraft:?addExternalServer=IMC.RE|Youzai%20World|mc.youzaiworld.top:19950" class="external-link">此处</a>来拉起客户端并自动添加服务器！</p>
                     <div class="server-info-item">
                         <span class="info-label">IP地址</span>
@@ -214,6 +214,7 @@
                         <button class="copy-btn" data-text="19950">复制</button>
                     </div>
                     <hr class="b-border">
+                    <h3>版本信息</h3>
                     <div class="server-info-item">
                         <span class="info-label">当前服务器版本</span>
                         <span class="info-value">Minecraft BDS 1.21.111</span>
@@ -222,6 +223,9 @@
                         <span class="info-label">最佳客户端版本</span>
                         <span class="info-value">Minecraft BE 1.21.111</span>
                     </div>
+                    <hr class="b-border">
+                    <h3>在线人数</h3>
+                    <div class="server-status" data-server="mc.youzaiworld.top" data-port="19950"></div>
                 </div>
                 <div class="join-form">
                     <h3>加入社区</h3>
@@ -272,6 +276,7 @@
     <div class="click-effect"></div>
 
     <script src="Resources/Scripts/Script.js"></script>
+    <script src="Resources/Scripts/SeverStatus.js"></script>
 </body>
 
 </html>

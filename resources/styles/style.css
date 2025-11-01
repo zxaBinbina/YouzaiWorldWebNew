@@ -41,13 +41,16 @@ body {
 }
 
 .navbar.scrolled {
-    background-color: rgba(168, 230, 207, 0.8); /* 滚动后变为半透明 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 滚动后添加阴影 */
+    background-color: rgba(168, 230, 207, 0.8);
+    /* 滚动后变为半透明 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* 滚动后添加阴影 */
 }
 
 .nav-container {
     display: flex;
-    justify-content: space-between; /* 默认两端对齐，移动端使用 */
+    justify-content: space-between;
+    /* 默认两端对齐，移动端使用 */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -100,7 +103,8 @@ body {
 }
 
 .navbar.scrolled .bar {
-    background-color: var(--dark-color); /* 滚动后变为深色 */
+    background-color: var(--dark-color);
+    /* 滚动后变为深色 */
 }
 
 /* 首页横幅样式 */
@@ -136,7 +140,8 @@ body {
     flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     padding: 12px 30px;
     border: none;
     border-radius: 50px;
@@ -195,12 +200,19 @@ body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0) rotate(45deg);
     }
+
     40% {
         transform: translateY(-10px) rotate(45deg);
     }
+
     60% {
         transform: translateY(-5px) rotate(45deg);
     }
@@ -212,7 +224,10 @@ body {
     background-color: var(--secondary-color);
 }
 
-.gallery h2, .features h2, .events h2, .join h2 {
+.gallery h2,
+.features h2,
+.events h2,
+.join h2 {
     text-align: center;
     margin-bottom: 50px;
     font-size: 2.5rem;
@@ -369,14 +384,16 @@ body {
     margin: 0 auto;
 }
 
-.join-info, .join-form {
+.join-info,
+.join-form {
     background-color: var(--light-text);
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.join-info h3, .join-form h3 {
+.join-info h3,
+.join-form h3 {
     margin-bottom: 20px;
     color: var(--dark-color);
 }
@@ -479,6 +496,7 @@ body {
         height: 0;
         opacity: 0.7;
     }
+
     100% {
         width: 100px;
         height: 100px;
@@ -490,28 +508,33 @@ body {
 /* 桌面端样式 - Logo与导航条目一起靠左 */
 @media (min-width: 769px) {
     .nav-container {
-        justify-content: flex-start; /* 桌面端左对齐 */
+        justify-content: flex-start;
+        /* 桌面端左对齐 */
     }
-    
+
     .nav-menu {
-        margin-left: 40px; /* 在Logo和导航条目之间添加间距 */
+        margin-left: 40px;
+        /* 在Logo和导航条目之间添加间距 */
     }
-    
+
     .nav-link {
-        margin-right: 30px; /* 改为右边距，使条目之间有间距 */
+        margin-right: 30px;
+        /* 改为右边距，使条目之间有间距 */
     }
-    
+
     .nav-link:last-child {
-        margin-right: 0; /* 最后一个条目不需要右边距 */
+        margin-right: 0;
+        /* 最后一个条目不需要右边距 */
     }
 }
 
 /* 移动端样式修复 - 汉堡菜单按钮靠右 */
 @media (max-width: 768px) {
     .nav-container {
-        justify-content: space-between; /* 确保移动端logo和汉堡菜单按钮分别靠左和靠右 */
+        justify-content: space-between;
+        /* 确保移动端logo和汉堡菜单按钮分别靠左和靠右 */
     }
-    
+
     .nav-menu {
         position: absolute;
         top: 100%;
@@ -557,15 +580,15 @@ body {
         background-color: rgba(168, 230, 207, 0.95) !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
     }
-    
+
     .navbar.menu-open .nav-logo {
         color: var(--dark-color) !important;
     }
-    
+
     .navbar.menu-open .nav-logo img {
         filter: none !important;
     }
-    
+
     .navbar.menu-open .bar {
         background-color: var(--dark-color) !important;
     }
@@ -586,7 +609,7 @@ body {
 
 /* 加载动画样式 */
 .spinner-wrapper {
-	position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -599,97 +622,120 @@ body {
 }
 
 .spinner {
-	position: absolute;
-	top: 50%; /* centers the loading animation vertically one the screen */
-	left: 50%; /* centers the loading animation horizontally one the screen */
-	width: 3.75rem;
-	height: 1.25rem;
-	margin: -0.625rem 0 0 -1.875rem; /* is width and height divided by two */ 
-	text-align: center;
+    position: absolute;
+    top: 50%;
+    /* centers the loading animation vertically one the screen */
+    left: 50%;
+    /* centers the loading animation horizontally one the screen */
+    width: 3.75rem;
+    height: 1.25rem;
+    margin: -0.625rem 0 0 -1.875rem;
+    /* is width and height divided by two */
+    text-align: center;
 }
 
-.spinner > div {
-	display: inline-block;
-	width: 1rem;
-	height: 1rem;
-	border-radius: 100%;
-	background-color: #fff;
-	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+.spinner>div {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: #fff;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
 .spinner .bounce1 {
-	-webkit-animation-delay: -0.32s;
-	animation-delay: -0.32s;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
 }
 
 .spinner .bounce2 {
-	-webkit-animation-delay: -0.16s;
-	animation-delay: -0.16s;
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
 }
 
 @-webkit-keyframes sk-bouncedelay {
-	0%, 80%, 100% { -webkit-transform: scale(0); }
-	40% { -webkit-transform: scale(1.0); }
+
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1.0);
+    }
 }
 
 @keyframes sk-bouncedelay {
-	0%, 80%, 100% { 
-		-webkit-transform: scale(0);
-		-ms-transform: scale(0);
-		transform: scale(0);
-	} 40% { 
-		-webkit-transform: scale(1.0);
-		-ms-transform: scale(1.0);
-		transform: scale(1.0);
-	}
+
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        transform: scale(1.0);
+    }
 }
-        
+
 .loader-container {
     text-align: center;
 }
-        
+
 .loader-image {
     width: 140px;
     height: auto;
     opacity: 0;
     animation: fadeInOut 2s infinite ease-in-out;
 }
-        
+
 @keyframes fadeInOut {
     0% {
         opacity: 0.4;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0.4;
     }
 }
 
 .loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(219, 219, 219);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.5s ease-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(219, 219, 219);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
 }
 
 .loader.hidden {
-  opacity: 0;
+    opacity: 0;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* 首页横幅轮播样式 */
@@ -856,17 +902,17 @@ body {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .info-label {
         min-width: auto;
         margin-bottom: 5px;
     }
-    
+
     .info-value {
         margin: 5px 0;
         width: 100%;
     }
-    
+
     .copy-btn {
         align-self: flex-end;
     }
@@ -903,7 +949,8 @@ body {
     background-position: center;
     vertical-align: middle;
     transition: transform 0.3s ease;
-    text-decoration: none; /* 确保伪元素本身没有下划线 */
+    text-decoration: none;
+    /* 确保伪元素本身没有下划线 */
 }
 
 /* 自定义链接样式 */
@@ -931,4 +978,39 @@ a.external-link:hover {
 .btn-secondary a.external-link:hover {
     color: inherit !important;
     text-decoration: none;
+}
+
+.server-status {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.server-status.online {
+    border-left: 4px solid #2ecc71;
+}
+
+.server-status.offline {
+    border-left: 4px solid #e74c3c;
+}
+
+.server-status.inloading {
+    border-left: 4px solid #f39c12;
+}
+
+.server-status-content {
+    display: flex;
+    align-items: center;
+}
+
+.server-status-details {
+    flex-grow: 1;
+}
+
+.server-status-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
 }

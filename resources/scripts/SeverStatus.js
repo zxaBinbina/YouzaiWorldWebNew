@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="server-status-details">
                     <div class="server-status-title">
                     <span class="status-indicator inloading"></span>
-                    -
+                    ${server} - 正在获取在线玩家数量...
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="server-status-details">
                                 <div class="server-status-title">
                                     <span class="status-indicator online"></span>
-                                    ${server} - 玩家: ${data.players.online}/${data.players.max}
+                                    ${server} - 在线玩家数量: ${data.players.online}/${data.players.max}
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="server-status-details">
                                 <div class="server-status-title">
                                     <span class="status-indicator offline"></span>
-                                    ${server} - 无法获取目标服务器信息
+                                    ${server} - 无法获取在线玩家数量
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="server-status-details">
                             <div class="server-status-title">
                                 <span class="status-indicator offline"></span>
-                                获取API数据时出现错误
+                                ${server} - 无法获取在线玩家数量
                             </div>
                         </div>
                     </div>
