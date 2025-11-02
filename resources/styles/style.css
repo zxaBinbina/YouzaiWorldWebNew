@@ -1,4 +1,5 @@
 /* style.css */
+/* ===== CSS变量定义 ===== */
 :root {
     --primary-color: #a8e6cf;
     --secondary-color: #dcedc1;
@@ -8,6 +9,7 @@
     --light-text: #fff;
 }
 
+/* ===== 重置和基础样式 ===== */
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +30,164 @@ body {
     padding: 0 20px;
 }
 
+.b-border {
+    background-color: #f5f5f57a;
+    margin: 20px 15px;
+    width: calc(100% - 30px);
+}
+
+/* ===== 通用组件样式 ===== */
+/* 按钮样式 */
+.btn-primary,
+.btn-secondary {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--dark-color);
+    border: 2px solid var(--dark-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--dark-color);
+    color: var(--light-text);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 链接样式 */
+.external-link {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.external-link:hover {
+    color: var(--dark-color) !important;
+    text-decoration-color: var(--dark-color);
+}
+
+.external-link::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6'%3E%3C/path%3E%3Cpolyline points='15,3 21,3 21,9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+/* 内部链接样式 */
+.internal-link {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.internal-link:hover {
+    color: var(--dark-color) !important;
+    text-decoration-color: var(--dark-color);
+}
+
+.internal-link::after {
+    content: none !important;
+}
+
+/* 按钮内的链接特殊处理 */
+.btn-primary a.external-link,
+.btn-secondary a.external-link,
+.btn-primary .internal-link,
+.btn-secondary .internal-link {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+.btn-primary a.external-link:hover,
+.btn-secondary a.external-link:hover,
+.btn-primary .internal-link:hover,
+.btn-secondary .internal-link:hover {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+/* QQ群按钮样式 */
+.qq-group-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 24px;
+    text-decoration: none;
+}
+
+.qq-group-btn .fa-qq {
+    font-size: 1.0rem;
+}
+
+/* 下载按钮样式 */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 复制按钮样式 */
+.copy-btn {
+    padding: 6px 12px;
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: var(--dark-color);
+    transform: translateY(-2px);
+}
+
+.copy-btn.copied {
+    background-color: #4CAF50;
+}
+
+/* ===== 布局组件 ===== */
 /* 导航栏样式 */
 .navbar {
     position: fixed;
@@ -42,15 +202,12 @@ body {
 
 .navbar.scrolled {
     background-color: rgba(168, 230, 207, 0.8);
-    /* 滚动后变为半透明 */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* 滚动后添加阴影 */
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
-    /* 默认两端对齐，移动端使用 */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -104,9 +261,9 @@ body {
 
 .navbar.scrolled .bar {
     background-color: var(--dark-color);
-    /* 滚动后变为深色 */
 }
 
+/* ===== 页面区块样式 ===== */
 /* 首页横幅样式 */
 .hero {
     position: relative;
@@ -140,46 +297,6 @@ body {
     flex-wrap: wrap;
 }
 
-.btn-primary,
-.btn-secondary {
-    padding: 12px 30px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--accent-color);
-    color: var(--light-text);
-    text-decoration: none;
-}
-
-.btn-primary:hover {
-    background-color: var(--dark-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--dark-color);
-    border: 2px solid var(--dark-color);
-    text-decoration: none;
-}
-
-.btn-secondary:hover {
-    background-color: var(--dark-color);
-    color: var(--light-text);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-}
-
 .hero-scroll {
     position: absolute;
     bottom: 30px;
@@ -197,25 +314,6 @@ body {
     transform: rotate(45deg);
     margin-top: 10px;
     animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0) rotate(45deg);
-    }
-
-    40% {
-        transform: translateY(-10px) rotate(45deg);
-    }
-
-    60% {
-        transform: translateY(-5px) rotate(45deg);
-    }
 }
 
 /* 图片展示区域 */
@@ -400,9 +498,162 @@ body {
     margin-bottom: 10px;
 }
 
+.join-form p {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 .form-note {
     font-size: 0.9rem;
     color: #666;
+}
+
+/* 服务器信息样式 */
+.server-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(168, 230, 207, 0.1);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.server-info-item:hover {
+    background-color: rgba(168, 230, 207, 0.2);
+}
+
+.info-label {
+    font-weight: bold;
+    min-width: 140px;
+    color: var(--dark-color);
+}
+
+.info-value {
+    flex: 1;
+    margin: 0 10px;
+    color: var(--text-color);
+}
+
+/* 服务器状态样式 */
+.server-status {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.server-status.online {
+    border-left: 4px solid #2ecc71;
+}
+
+.server-status.offline {
+    border-left: 4px solid #e74c3c;
+}
+
+.server-status.inloading {
+    border-left: 4px solid #e39211;
+}
+
+.server-status-content {
+    display: flex;
+    align-items: center;
+}
+
+.server-status-details {
+    flex-grow: 1;
+}
+
+.server-status-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* 下载区域样式 */
+.download-section {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: rgba(168, 230, 207, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.download-section h3 {
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.download-section p {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/* 友情外链卡片样式 */
+.friend-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.friend-link-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 60px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.friend-link-card:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.friend-link-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.friend-link-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.friend-link-content {
+    flex: 1;
+}
+
+.friend-link-content h4 {
+    color: var(--light-text);
+    margin-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.friend-link-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin: 0;
 }
 
 /* 页脚样式 */
@@ -448,6 +699,41 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* 页脚中的链接样式 */
+.footer .external-link {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer .external-link:hover {
+    color: var(--light-text) !important;
+}
+
+.footer .external-link::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6'%3E%3C/path%3E%3Cpolyline points='15,3 21,3 21,9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.footer .internal-link {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer .internal-link:hover {
+    color: var(--light-text) !important;
+}
+
+/* ===== 特效和动画 ===== */
 /* 点击特效 */
 .click-effect {
     position: fixed;
@@ -475,184 +761,43 @@ body {
     }
 }
 
-/* 响应式设计 */
-/* 桌面端样式 - Logo与导航条目一起靠左 */
-@media (min-width: 769px) {
-    .nav-container {
-        justify-content: flex-start;
-        /* 桌面端左对齐 */
+/* 滚动箭头动画 */
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0) rotate(45deg);
     }
 
-    .nav-menu {
-        margin-left: 40px;
-        /* 在Logo和导航条目之间添加间距 */
+    40% {
+        transform: translateY(-10px) rotate(45deg);
     }
 
-    .nav-link {
-        margin-right: 30px;
-        /* 改为右边距，使条目之间有间距 */
-    }
-
-    .nav-link:last-child {
-        margin-right: 0;
-        /* 最后一个条目不需要右边距 */
-    }
-}
-
-/* 移动端样式修复 - 汉堡菜单按钮靠右 */
-@media (max-width: 768px) {
-    .nav-container {
-        justify-content: space-between;
-        /* 确保移动端logo和汉堡菜单按钮分别靠左和靠右 */
-    }
-
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        background-color: var(--primary-color);
-        text-align: left;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .nav-menu.active {
-        max-height: 400px;
-        opacity: 1;
-        visibility: visible;
-        padding: 15px 0;
-    }
-
-    .nav-link {
-        margin: 8px 0;
-        padding: 8px 20px;
-        display: block;
-        width: 100%;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        text-align: left;
-    }
-
-    .nav-link:last-child {
-        border-bottom: none;
-    }
-
-    .nav-toggle {
-        display: flex;
-    }
-
-    .navbar.menu-open {
-        background-color: rgba(168, 230, 207, 0.95) !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-    }
-
-    .navbar.menu-open .nav-logo {
-        color: var(--dark-color) !important;
-    }
-
-    .navbar.menu-open .nav-logo img {
-        filter: none !important;
-    }
-
-    .navbar.menu-open .bar {
-        background-color: var(--dark-color) !important;
-    }
-
-    /* 汉堡菜单动画 */
-    .nav-toggle.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .nav-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .nav-toggle.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+    60% {
+        transform: translateY(-5px) rotate(45deg);
     }
 }
 
 /* 加载动画样式 */
-.spinner-wrapper {
+.loader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999999;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
 }
 
-.spinner {
-    position: absolute;
-    top: 50%;
-    /* centers the loading animation vertically one the screen */
-    left: 50%;
-    /* centers the loading animation horizontally one the screen */
-    width: 3.75rem;
-    height: 1.25rem;
-    margin: -0.625rem 0 0 -1.875rem;
-    /* is width and height divided by two */
-    text-align: center;
-}
-
-.spinner>div {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 100%;
-    background-color: #fff;
-    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-}
-
-.spinner .bounce1 {
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
-}
-
-.spinner .bounce2 {
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
-}
-
-@-webkit-keyframes sk-bouncedelay {
-
-    0%,
-    80%,
-    100% {
-        -webkit-transform: scale(0);
-    }
-
-    40% {
-        -webkit-transform: scale(1.0);
-    }
-}
-
-@keyframes sk-bouncedelay {
-
-    0%,
-    80%,
-    100% {
-        -webkit-transform: scale(0);
-        -ms-transform: scale(0);
-        transform: scale(0);
-    }
-
-    40% {
-        -webkit-transform: scale(1.0);
-        -ms-transform: scale(1.0);
-        transform: scale(1.0);
-    }
+.loader.hidden {
+    opacity: 0;
 }
 
 .loader-container {
@@ -680,23 +825,75 @@ body {
     }
 }
 
-.loader {
+.spinner-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
+    z-index: 999999;
 }
 
-.loader.hidden {
-    opacity: 0;
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3.75rem;
+    height: 1.25rem;
+    margin: -0.625rem 0 0 -1.875rem;
+    text-align: center;
+}
+
+.spinner>div {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: #fff;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1.0);
+    }
+}
+
+@keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        transform: scale(1.0);
+    }
 }
 
 @keyframes spin {
@@ -710,12 +907,6 @@ body {
 }
 
 /* 首页横幅轮播样式 */
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-
 .hero-slider {
     position: absolute;
     top: 0;
@@ -793,81 +984,115 @@ body {
     z-index: 2;
 }
 
-/* 确保内容在蒙版上方 */
 .hero-content,
 .hero-scroll {
     position: relative;
     z-index: 3;
 }
 
-/* 服务器信息样式 */
-.server-info-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: rgba(168, 230, 207, 0.1);
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+/* 运行时间样式 */
+#uptime-counter {
+    color: var(--primary-color);
 }
 
-.server-info-item:hover {
-    background-color: rgba(168, 230, 207, 0.2);
+/* ===== 响应式设计 ===== */
+/* 桌面端样式 */
+@media (min-width: 769px) {
+    .nav-container {
+        justify-content: flex-start;
+    }
+
+    .nav-menu {
+        margin-left: 40px;
+    }
+
+    .nav-link {
+        margin-right: 30px;
+    }
+
+    .nav-link:last-child {
+        margin-right: 0;
+    }
 }
 
-.info-label {
-    font-weight: bold;
-    min-width: 140px;
-    color: var(--dark-color);
-}
-
-.info-value {
-    flex: 1;
-    margin: 0 10px;
-    color: var(--text-color);
-}
-
-.copy-btn {
-    padding: 6px 12px;
-    background-color: var(--accent-color);
-    color: var(--light-text);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-.copy-btn:hover {
-    background-color: var(--dark-color);
-    transform: translateY(-2px);
-}
-
-.copy-btn.copied {
-    background-color: #4CAF50;
-}
-
-/* QQ群按钮样式 */
-.qq-group-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 9px 24px;
-    text-decoration: none;
-}
-
-.qq-group-btn .fa-qq {
-    font-size: 1.0rem;
-}
-
-.join-form p {
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* 响应式调整 */
+/* 移动端样式 */
 @media (max-width: 768px) {
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--primary-color);
+        text-align: left;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .nav-menu.active {
+        max-height: 100vh;
+        overflow-y: auto;
+        opacity: 1;
+        visibility: visible;
+        padding: 15px 0;
+    }
+
+    .nav-link {
+        margin: 8px 0;
+        padding: 8px 20px;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .navbar.menu-open {
+        background-color: rgba(168, 230, 207, 0.95) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .navbar.menu-open .nav-logo {
+        color: var(--dark-color) !important;
+    }
+
+    .navbar.menu-open .nav-logo img {
+        filter: none !important;
+    }
+
+    .navbar.menu-open .bar {
+        background-color: var(--dark-color) !important;
+    }
+
+    /* 汉堡菜单动画 */
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
     .server-info-item {
         flex-direction: column;
         align-items: flex-start;
@@ -886,170 +1111,7 @@ body {
     .copy-btn {
         align-self: flex-end;
     }
-}
 
-.b-border {
-    background-color: #f5f5f57a;
-    margin: 20px 15px;
-    width: calc(100% - 30px);
-}
-
-/* 通过CSS添加图标 */
-.external-link {
-    color: var(--accent-color) !important;
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.external-link:hover {
-    color: var(--dark-color) !important;
-    text-decoration-color: var(--dark-color);
-}
-
-.external-link::after {
-    content: '';
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-left: 4px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6'%3E%3C/path%3E%3Cpolyline points='15,3 21,3 21,9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    vertical-align: middle;
-    transition: transform 0.3s ease;
-    text-decoration: none;
-}
-
-/* 自定义链接样式 */
-a.external-link {
-    color: var(--accent-color) !important;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    text-decoration: underline;
-}
-
-a.external-link:hover {
-    color: var(--dark-color) !important;
-    text-decoration: underline;
-}
-
-.btn-primary a.external-link,
-.btn-secondary a.external-link {
-    color: inherit !important;
-    text-decoration: none;
-}
-
-.btn-primary a.external-link:hover,
-.btn-secondary a.external-link:hover {
-    color: inherit !important;
-    text-decoration: none;
-}
-
-/* 内部链接样式 */
-.internal-link {
-    color: var(--accent-color) !important;
-    text-decoration: underline;
-    text-decoration-color: var(--accent-color);
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.internal-link:hover {
-    color: var(--dark-color) !important;
-    text-decoration-color: var(--dark-color);
-}
-
-.internal-link::after {
-    content: none !important;
-}
-
-.btn-primary .internal-link,
-.btn-secondary .internal-link {
-    color: inherit !important;
-    text-decoration: none;
-}
-
-.btn-primary .internal-link:hover,
-.btn-secondary .internal-link:hover {
-    color: inherit !important;
-    text-decoration: none;
-}
-
-/* 服务器状态样式 */
-.server-status {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 24px;
-    margin-top: 20px;
-    border: 1px solid #e0e0e0;
-}
-
-.server-status.online {
-    border-left: 4px solid #2ecc71;
-}
-
-.server-status.offline {
-    border-left: 4px solid #e74c3c;
-}
-
-.server-status.inloading {
-    border-left: 4px solid #e39211;
-}
-
-.server-status-content {
-    display: flex;
-    align-items: center;
-}
-
-.server-status-details {
-    flex-grow: 1;
-}
-
-.server-status-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-/* 下载区域样式 */
-.download-section {
-    margin: 25px 0;
-    padding: 20px;
-    background-color: rgba(168, 230, 207, 0.1);
-    border-radius: 10px;
-    text-align: center;
-}
-
-.download-section h3 {
-    color: var(--dark-color);
-    margin-bottom: 10px;
-}
-
-.download-section p {
-    margin-bottom: 15px;
-    color: var(--text-color);
-}
-
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.download-btn:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
     .download-section {
         margin: 20px 0;
         padding: 15px;
@@ -1059,77 +1121,7 @@ a.external-link:hover {
         width: 100%;
         padding: 12px 20px;
     }
-}
 
-/* 友情外链卡片样式 */
-.friend-links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.friend-link-card {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 12px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    min-height: 60px;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-}
-
-.friend-link-card:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-    text-decoration: none;
-    color: inherit;
-}
-
-.friend-link-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-}
-
-/* 图片图标的样式 */
-.friend-link-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 6px;
-}
-
-.friend-link-content {
-    flex: 1;
-}
-
-.friend-link-content h4 {
-    color: var(--light-text);
-    margin-bottom: 4px;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.friend-link-content p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.8rem;
-    line-height: 1.3;
-    margin: 0;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
     .friend-links-grid {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -1153,44 +1145,4 @@ a.external-link:hover {
     .friend-link-content p {
         font-size: 0.75rem;
     }
-}
-
-/* 运行时间样式 */
-#uptime-counter {
-    color: var(--primary-color);
-}
-
-/* 页脚中的外部链接样式 */
-.footer .external-link {
-    color: var(--primary-color) !important;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.footer .external-link:hover {
-    color: var(--light-text) !important;
-}
-
-.footer .external-link::after {
-    content: '';
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-left: 4px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6'%3E%3C/path%3E%3Cpolyline points='15,3 21,3 21,9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    vertical-align: middle;
-    transition: transform 0.3s ease;
-}
-
-/* 页脚中的内部链接样式 */
-.footer .internal-link {
-    color: var(--primary-color) !important;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.footer .internal-link:hover {
-    color: var(--light-text) !important;
 }
