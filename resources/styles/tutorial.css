@@ -1,0 +1,191 @@
+/* 教程页面特定样式 */
+.tutorial-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+.tutorial-sidebar {
+    flex: 0 0 280px;
+    background-color: var(--light-text);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 100px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+}
+
+.tutorial-content {
+    flex: 1;
+    background-color: var(--light-text);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tutorial-nav {
+    list-style: none;
+}
+
+.tutorial-nav li {
+    margin-bottom: 10px;
+}
+
+.tutorial-nav a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--dark-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tutorial-nav a:hover,
+.tutorial-nav a.active {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+.tutorial-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(52, 94, 84, 0.1);
+}
+
+.tutorial-section:last-child {
+    border-bottom: none;
+}
+
+.tutorial-section h2 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.tutorial-section h3 {
+    color: var(--dark-color);
+    margin: 20px 0 10px;
+}
+
+.tutorial-section p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.tutorial-section ul,
+.tutorial-section ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.tutorial-section li {
+    margin-bottom: 8px;
+}
+
+.tutorial-section code {
+    background-color: rgba(168, 230, 207, 0.2);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.tutorial-section pre {
+    background-color: rgba(52, 94, 84, 0.05);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+.tutorial-section img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin: 15px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-nav-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: var(--accent-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tutorial-nav-toggle:hover {
+    background-color: var(--dark-color);
+    transform: translateY(-3px);
+}
+
+.tutorial-nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--light-text);
+    margin: 3px auto;
+    transition: all 0.3s ease;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+    .tutorial-container {
+        flex-direction: column;
+        margin: 20px auto;
+        padding: 0 15px;
+        gap: 20px;
+    }
+
+    .tutorial-sidebar {
+        position: fixed;
+        top: 100px;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        z-index: 999;
+        transition: left 0.3s ease;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        padding: 20px; 
+    }
+
+    .tutorial-sidebar.active {
+        left: 10px;
+    }
+
+    .tutorial-content {
+        padding: 20px;
+    }
+
+    .tutorial-nav-toggle {
+        display: block;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+}
