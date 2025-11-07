@@ -254,7 +254,7 @@ body {
 .bar {
     width: 25px;
     height: 3px;
-    background-color: var(--light-text);
+    background-color: var(--dark-color);
     margin: 3px 0;
     transition: 0.3s;
 }
