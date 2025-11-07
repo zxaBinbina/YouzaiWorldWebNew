@@ -13,6 +13,8 @@
     <div class="loader">
         <div class="loader-container">
             <img class="loader-image" src="resources/images/loading.webp" alt="Loading...">
+            <hr class="loader-image" style="color: var(--dark-color);background-color: var(--dark-color);height: 2px;">
+            <p class="loader-image" style="color: var(--dark-color);">正在加载中...</p>
         </div>
     </div>
     <!-- 导航栏 -->
@@ -22,28 +24,28 @@
                 <img src="resources/images/youzaiworld.webp" alt="悠哉世界">
             </div>
             <div class="nav-menu">
-                <a href="#home" class="nav-link">主页</a>
-                <a href="#trend" class="nav-link">服务器动态</a>
-                <a href="#events" class="nav-link">活动列表</a>
-                <a href="#features" class="nav-link">玩法一览</a>
-
-                <!-- 添加下拉菜单的导航项 -->
+                <a href="/" class="nav-link">主页</a>
                 <div class="nav-item dropdown">
-                    <a href="#join" class="nav-link dropdown-toggle">加入服务器与服务器 QQ 群</a>
+                    <div class="nav-link dropdown-toggle">服务器信息</div>
                     <ul class="dropdown-menu">
-                        <li><a href="#join" class="dropdown-link">服务器信息</a></li>
-                        <li><a href="#join" class="dropdown-link">QQ群加入</a></li>
-                        <li><a href="#join" class="dropdown-link">游戏下载</a></li>
+                        <li><a href="#trend" class="dropdown-link">动态查看</a></li>
+                        <li><a href="#events" class="dropdown-link">活动列表</a></li>
+                        <li><a href="#features" class="dropdown-link">玩法一览</a></li>
                     </ul>
                 </div>
-
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">教程中心</a>
+                    <div class="nav-link dropdown-toggle">加入服务器</div>
                     <ul class="dropdown-menu">
-                        <li><a href="#" class="dropdown-link">Xbox账号注册</a></li>
-                        <li><a href="#" class="dropdown-link">游戏基础教程</a></li>
-                        <li><a href="#" class="dropdown-link">服务器玩法指南</a></li>
-                        <li><a href="#" class="dropdown-link">常见问题解答</a></li>
+                        <li><a href="#join-server" class="dropdown-link">服务器地址</a></li>
+                        <li><a href="#join-qqqun" class="dropdown-link">加入 QQ 群</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">教程中心</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="tutorial.html" class="dropdown-link">教程中心主页</a></li>
+                        <li><a href="tutorials/quick_play_guide.html" class="dropdown-link">快速游玩指南</a></li>
+                        <li><a href="../resources/wiki.pdf" class="dropdown-link">旧版教程页面<br>（不推荐）</a></li>
                     </ul>
                 </div>
             </div>
@@ -237,7 +239,7 @@
         <div class="container">
             <h2>加入服务器</h2>
             <div class="join-content">
-                <div class="join-info">
+                <div class="join-info" id="join-server">
                     <h3>服务器地址</h3>
                     <p>可以尝试点击<a href="minecraft:?addExternalServer=IMC.RE|Youzai%20World|mc.youzaiworld.top:19950"
                             class="external-link">此处</a>来拉起客户端并自动添加服务器！</p>
@@ -282,7 +284,7 @@
                         <a href="https://www.eqad.fun/status" class="external-link" target="_blank">详细信息</a>
                     </div>
                 </div>
-                <div class="join-info">
+                <div class="join-info" id="join-qqqun">
                     <h3>加入官方 QQ 群</h3>
                     <div class="download-section">
                         <p class="form-note">加入QQ群与其他玩家交流，获取服务器最新动态</p>
