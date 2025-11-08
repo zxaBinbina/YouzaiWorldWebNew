@@ -1352,3 +1352,70 @@ body {
     }
 }
 
+
+
+/* 表格样式 - 添加到 tutorial.css 文件末尾 */
+.tutorial-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    background-color: var(--light-text);
+}
+
+.tutorial-section thead {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+.tutorial-section th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.tutorial-section td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(52, 94, 84, 0.1);
+    line-height: 1.5;
+}
+
+.tutorial-section tbody tr {
+    transition: all 0.3s ease;
+}
+
+.tutorial-section tbody tr:hover {
+    background-color: rgba(168, 230, 207, 0.1);
+}
+
+.tutorial-section tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 条纹表格效果（可选） */
+.tutorial-section tbody tr:nth-child(even) {
+    background-color: rgba(168, 230, 207, 0.05);
+}
+
+.tutorial-section tbody tr:nth-child(even):hover {
+    background-color: rgba(168, 230, 207, 0.15);
+}
+
+/* 移动端表格响应式处理 */
+@media (max-width: 768px) {
+    .tutorial-section table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .tutorial-section th,
+    .tutorial-section td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+}
