@@ -391,35 +391,153 @@ body {
     transform: translateY(0);
 }
 
-/* 玩法介绍区域 */
+/* 优势部分样式改进 */
 .strength {
     padding: 100px 0;
-    background-color: #f9fdfb;
+    background: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.strength h2 {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.8rem;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 20px;
 }
 
 .strength-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .strength-card {
-    background-color: var(--light-text);
-    border-radius: 10px;
-    padding: 30px;
+    background: linear-gradient(145deg, #ffffff, #f8fdfa);
+    border-radius: 20px;
+    padding: 40px 30px 30px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 
+        0 10px 30px rgba(52, 94, 84, 0.08),
+        0 4px 12px rgba(52, 94, 84, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(168, 230, 207, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.strength-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+/* 图片容器样式 */
+.strength-image-container {
+    width: 100%;
+    max-width: 280px;
+    height: 110px;
+    margin: 0 auto 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(52, 94, 84, 0.15);
+    transition: all 0.4s ease;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: 4px;
+}
+
+.strength-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    filter: brightness(1) saturate(1);
 }
 
 .strength-card h3 {
     margin-bottom: 15px;
     color: var(--dark-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 12px;
+    width: 100%;
+}
+
+.strength-card p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+    opacity: 0.9;
+    transition: all 0.4s ease;
+    width: 100%;
+}
+
+/* 为每个卡片添加独特的颜色边框效果 */
+.strength-card:nth-child(1) .strength-image-container::after {
+    background: linear-gradient(135deg, #a8e6cf, #6bb39b, #a8e6cf);
+}
+
+.strength-card:nth-child(2) .strength-image-container::after {
+    background: linear-gradient(135deg, #ffd93d, #ff9a3d, #ffd93d);
+}
+
+.strength-card:nth-child(3) .strength-image-container::after {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #6c5ce7);
+}
+
+.strength-card:nth-child(1):hover {
+    border-color: rgba(107, 179, 155, 0.5);
+}
+
+.strength-card:nth-child(2):hover {
+    border-color: rgba(255, 154, 61, 0.5);
+}
+
+.strength-card:nth-child(3):hover {
+    border-color: rgba(108, 92, 231, 0.5);
+}
+
+/* 移动端响应式设计 */
+@media (max-width: 768px) {
+    .strength {
+        padding: 80px 0;
+    }
+    
+    .strength h2 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+    
+    .strength-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .strength-card {
+        padding: 30px 20px 25px;
+        margin: 0 10px;
+    }
+    
+    .strength-image-container {
+        max-width: 240px;
+        height: 94px; /* 240*(268/690)≈93.5 */
+        margin-bottom: 20px;
+    }
+    
+    .strength-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .strength-card p {
+        font-size: 1rem;
+    }
 }
 
 /* 活动列表区域 */
@@ -1500,5 +1618,346 @@ body {
     .event-status {
         margin-left: 0;
         align-self: flex-start;
+    }
+}
+
+#hero {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero .hero-bg-swiper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#hero .hero-bg {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+#hero .hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#hero .hero-content-swiper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#hero .hero-content {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 60px;
+}
+
+#hero .album-cover {
+  width: 400px;
+  height: 400px;
+}
+
+#hero .album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#hero .album-info {
+  color: #fff;
+  max-width: 500px;
+  user-select: none;
+}
+
+#hero .album-info h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+#hero .album-info p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+#hero .btn-detail {
+  display: inline-block;
+  padding: 12px 30px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 3px solid #fff;
+}
+
+#hero .btn-detail:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+#hero .swiper-button-next,
+#hero .swiper-button-prev {
+  color: #fff;
+}
+
+#hero .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.5;
+  width: 20px;
+  height: 4px;
+  border-radius: 0px;
+  margin: 0 3px;
+  transition: 0.5s ease-in-out;
+}
+
+#hero .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 30px;
+  height: 4px;
+  border-radius: 0px;
+}
+
+@media (max-width: 991px) {
+  #hero .hero-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 15px;
+    gap: 40px;
+  }
+
+  #hero .album-cover {
+    width: 300px;
+    height: 300px;
+  }
+
+  #hero .album-info h2 {
+    font-size: 36px;
+  }
+
+  #hero .album-info p {
+    font-size: 16px;
+  }
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+/* 导航按钮样式 */
+
+.swiper-button-next {
+    right: 20px;
+}
+
+.swiper-button-prev {
+    left: 20px;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-family: swiper-icons;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.swiper-button-next:after {
+    content: 'next';
+}
+
+.swiper-button-prev:after {
+    content: 'prev';
+}
+
+/* 分页器样式 */
+.swiper-pagination {
+    position: absolute;
+    text-align: center;
+    transition: 300ms opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 1000; /* 提高 z-index */
+    bottom: 30px !important; /* 调整位置 */
+    left: 0;
+    width: 100%;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    display: inline-block !important;
+    border-radius: 50%;
+    background: var(--light-text);
+    opacity: 0.5;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--accent-color);
+    opacity: 1 !important;
+    transform: scale(1.2);
+}
+
+/* 玩法特性轮播区域特定样式 - 适配690x268图片 */
+#features {
+    padding: 80px 0 0;
+}
+
+#hero {
+    position: relative;
+    height: 100vh; /* 或者 500px，根据你的需求调整 */
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.hero-bg-swiper,
+.hero-content-swiper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.hero-content-swiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 移除文字背景，改为透明 */
+.album-info {
+    background: transparent; 
+    padding: 30px;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* 文字样式 - 添加阴影提高可读性 */
+.album-info h2 {
+    color: var(--light-text);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    font-weight: 700;
+}
+
+.album-info p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: var(--light-text);
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+
+/* 淡入淡出效果 */
+.swiper-fade {
+    opacity: 1 !important;
+}
+
+.swiper-fade .swiper-slide {
+    pointer-events: none;
+    transition-property: opacity;
+}
+
+.swiper-fade .swiper-slide .swiper-slide {
+    pointer-events: none;
+}
+
+.swiper-fade .swiper-slide-active {
+    pointer-events: auto;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+    }
+    
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 18px;
+    }
+    
+    .swiper-button-next {
+        right: 10px;
+    }
+    
+    .swiper-button-prev {
+        left: 10px;
+    }
+    
+    .album-info {
+        padding: 20px 15px;
+        margin: 0 15px;
+    }
+    
+    .album-info h2 {
+        font-size: 2rem;
+    }
+    
+    .album-info p {
+        font-size: 1.1rem;
+    }
+    
+    #hero {
+        height: 100vh;
     }
 }
