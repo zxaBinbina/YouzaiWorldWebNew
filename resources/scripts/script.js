@@ -238,17 +238,14 @@ function updateNavbarState() {
     const navbar = document.querySelector('.navbar');
     const hasActiveDropdown = document.querySelector('.dropdown-menu.active');
     const navMenu = document.querySelector('.nav-menu');
-
     // 如果下拉菜单是打开的，不处理背景色变化
     if (hasActiveDropdown) {
         return;
     }
-
     // 如果移动端菜单是打开的，不处理背景色变化
     if (navMenu && navMenu.classList.contains('active')) {
         return;
     }
-
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
         navbar.style.padding = '15px 0';
