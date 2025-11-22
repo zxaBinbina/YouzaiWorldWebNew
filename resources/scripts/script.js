@@ -127,44 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 每秒更新一次
     setInterval(updateUptime, 1000);
-
-    // 复制按钮功能
-    document.querySelectorAll('.copy-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            const textToCopy = this.getAttribute('data-text');
-
-            // 使用现代 Clipboard API
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                // 复制成功反馈
-                const originalText = this.textContent;
-                this.textContent = '成功';
-                this.classList.add('copied');
-
-                setTimeout(() => {
-                    this.textContent = originalText;
-                    this.classList.remove('copied');
-                }, 1000);
-            }).catch(err => {
-                // 降级方案：使用传统方法
-                const textArea = document.createElement('textarea');
-                textArea.value = textToCopy;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-
-                // 反馈
-                const originalText = this.textContent;
-                this.textContent = '成功';
-                this.classList.add('copied');
-
-                setTimeout(() => {
-                    this.textContent = originalText;
-                    this.classList.remove('copied');
-                }, 1000);
-            });
-        });
-    });
 });
 
 // 二级菜单功能
