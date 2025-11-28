@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩家处罚记录 - Youzai World</title>
+    <link rel="stylesheet" href="resources/styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="resources/styles/style.css">
+    <link rel="icon" href="resources/images/logocircle.webp">
+    <link rel="stylesheet" href="resources/styles/banlist.css">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-container">
+            <img class="loader-image" src="resources/images/loading.webp" alt="Loading...">
+            <hr class="loader-image" style="color: var(--dark-color);background-color: var(--dark-color);height: 2px;">
+            <p class="loader-image" style="color: var(--dark-color);">正在加载中...</p>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="resources/images/youzaiworld.webp" alt="悠哉世界">
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">主页</a>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">服务器信息</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="/#trend" class="dropdown-link">动态查看</a></li>
+                        <li><a href="/#events" class="dropdown-link">活动列表</a></li>
+                        <li><a href="/#features" class="dropdown-link">玩法特性一览</a></li>
+                        <li><a href="status" class="dropdown-link">服务器状态监控</a></li>
+                        <li><a href="banlist" class="dropdown-link">封神榜</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">加入服务器</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="/#join-server" class="dropdown-link">服务器地址</a></li>
+                        <li><a href="/#join-qqqun" class="dropdown-link">加入 QQ 群</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">教程中心</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="tutorial" class="dropdown-link">教程中心主页</a></li>
+                        <li><a href="tutorials/quick_play_guide" class="dropdown-link">快速游玩指南</a></li>
+                        <li><a href="resources/wiki.pdf" class="dropdown-link">旧版教程页面<br>（不推荐）</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <section class="hero-other">
+        <div class="hero-content">
+            <br><br><br><br>
+            <h1>玩家处罚记录</h1>
+            <p>查看服务器内玩家的处罚情况</p>
+        </div>
+    </section>
+    <br><br>
+
+    <div class="penalty-container">
+        <div class="penalty-stats">
+            <div class="stat-card">
+                <h3>当前有效处罚</h3>
+                <div class="count" id="active-count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>今日新增处罚</h3>
+                <div class="count" id="today-count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>封禁玩家</h3>
+                <div class="count" id="ban-count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>禁言玩家</h3>
+                <div class="count" id="mute-count">0</div>
+            </div>
+        </div>
+        
+        <div class="penalty-filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="search-player">搜索玩家或原因</label>
+                    <input type="text" id="search-player" placeholder="输入玩家名称或处罚原因...">
+                </div>
+                <div class="filter-group">
+                    <label for="filter-type">处罚类型</label>
+                    <select id="filter-type">
+                        <option value="all">全部类型</option>
+                        <option value="ban">封禁</option>
+                        <option value="mute">禁言</option>
+                        <option value="kick">踢出群聊</option>
+                        <option value="warning">警告</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-status">处罚状态</label>
+                    <select id="filter-status">
+                        <option value="all">全部状态</option>
+                        <option value="active">生效中</option>
+                        <option value="expired">已过期</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-operator">操作员</label>
+                    <select id="filter-operator">
+                        <option value="all">全部操作员</option>
+                        <option value="zxaBinbin">zxaBinbin</option>
+                        <option value="ress2338396">ress2338396</option>
+                        <option value="GrantedCar81239">GrantedCar81239</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-actions">
+                <button class="btn-secondary" id="reset-filters">重置筛选</button>
+            </div>
+        </div>
+        
+        <div class="penalty-table-container">
+            <div class="results-info" id="results-info">正在加载数据...</div>
+            <table class="penalty-table">
+                <thead>
+                    <tr>
+                        <th>玩家</th>
+                        <th>处罚类型</th>
+                        <th>处罚原因</th>
+                        <th>处罚时间</th>
+                        <th>解封时间</th>
+                        <th>操作员</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody id="penalty-table-body">
+                    <!-- 数据将通过JavaScript动态加载 -->
+                </tbody>
+            </table>
+            <div class="no-results" id="no-results" style="display: none;">
+                没有找到匹配的处罚记录
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- 页底 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="nav-logo">
+                        <img src="resources/images/youzaiworldlight.webp" alt="悠哉世界">
+                    </div><br>
+                    <p>一个充满创意与冒险的Minecraft服务器，致力于为玩家提供最佳的游戏体验。</p>
+                    <br><br>
+                    <img src="resources/images/cloudflare.svg" alt="Cloudflare">
+                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="/" class="internal-link">首页</a></li>
+                        <li><a href="/#trend" class="internal-link">服务器动态</a></li>
+                        <li><a href="/#events" class="internal-link">活动列表</a></li>
+                        <li><a href="/#features" class="internal-link">玩法特性一览</a></li>
+                        <li><a href="/#join" class="internal-link">加入服务器与服务器 QQ 群</a></li>
+                        <li><a href="tutorial" class="internal-link">教程中心</a></li>
+                        <li><a href="status" class="internal-link">服务器状态监控</a></li>
+                        <li><a href="banlist" class="internal-link">封神榜</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>友情外链</h3>
+                    <div class="friend-links-grid">
+                        <a href="https://eqad.fun" class="friend-link-card" target="_blank">
+                            <div class="friend-link-icon">
+                                <img src="resources/images/eqad.webp" alt="eqad">
+                            </div>
+                            <div class="friend-link-content">
+                                <h4>EQAD</h4>
+                                <p>一个由马迷们合作开设的Minecraft服务器</p>
+                            </div>
+                        </a>
+                        <a href="https://raku404.com" class="friend-link-card" target="_blank">
+                            <div class="friend-link-icon">
+                                <img src="resources/images/raku.webp" alt="raku">
+                            </div>
+                            <div class="friend-link-content">
+                                <h4>羽梦千景</h4>
+                                <p>这里是千景的小站</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright &copy; <a href="https://github.com/zxaBinbina/YouzaiWorldWebNew" class="external-link"
+                        style="text-decoration: none;" target="_blank">Youzai World Team</a><br>本站已正常运行 <span
+                        id="uptime-counter">1 天 1 时 45 分 14 秒</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 点击特效元素 -->
+    <div class="click-effect"></div>
+
+    <script src="resources/scripts/script.js"></script>
+    <script src="resources/scripts/banlist.js"></script>
+</body>
+</html>
