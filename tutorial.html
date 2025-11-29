@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教程中心主页 - Youzai World</title>
+    <link rel="stylesheet" href="resources/styles/style.css">
+    <link rel="stylesheet" href="resources/styles/tutorial_home.css">
+    <link rel="icon" href="resources/images/logocircle.webp">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-container">
+            <img class="loader-image" src="resources/images/loading.webp" alt="Loading...">
+            <hr class="loader-image" style="color: var(--dark-color);background-color: var(--dark-color);height: 2px;">
+            <p class="loader-image" style="color: var(--dark-color);">正在加载中...</p>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="resources/images/youzaiworld.webp" alt="悠哉世界">
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">主页</a>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">服务器信息</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="/#trend" class="dropdown-link">动态查看</a></li>
+                        <li><a href="/#events" class="dropdown-link">活动列表</a></li>
+                        <li><a href="/#features" class="dropdown-link">玩法特性一览</a></li>
+                        <li><a href="status" class="dropdown-link">服务器状态监控</a></li>
+                        <li><a href="banlist" class="dropdown-link">封神榜</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">加入服务器</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="/#join-server" class="dropdown-link">服务器地址</a></li>
+                        <li><a href="/#join-qqqun" class="dropdown-link">加入 QQ 群</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">教程中心</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="tutorial" class="dropdown-link">教程中心主页</a></li>
+                        <li><a href="tutorials/quick_play_guide" class="dropdown-link">快速游玩指南</a></li>
+                        <li><a href="resources/wiki.pdf" class="dropdown-link">旧版教程页面<br>（不推荐）</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-other">
+        <div class="hero-content">
+            <br><br><br><br>
+            <h1>教程中心主页</h1>
+            <p>Tutorial Center Home</p>
+        </div>
+    </section>
+
+    <!-- 内容区域 -->
+    <section class="tutorials">
+        <div class="container">
+            <div class="tutorial-intro">
+                <p>在这里找到所有服务器相关教程，帮助您更好地游玩悠哉世界</p>
+            </div>
+            
+            <!-- 搜索区域 -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" id="tutorialSearch" placeholder="搜索教程标题..." class="search-input">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="#345e54"/>
+                    </svg>
+                </div>
+                <p class="search-results-info">找到 <span id="resultCount">0</span> 个教程</p>
+            </div>
+            
+            <!-- 教程列表 -->
+            <div class="tutorial-list" id="tutorialList">
+                <!-- 教程项将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页底 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="nav-logo">
+                        <img src="resources/images/youzaiworldlight.webp" alt="悠哉世界">
+                    </div><br>
+                    <p>一个充满创意与冒险的Minecraft服务器，致力于为玩家提供最佳的游戏体验。</p>
+                    <br><br>
+                    <img src="resources/images/cloudflare.svg" alt="Cloudflare">
+                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="/" class="internal-link">首页</a></li>
+                        <li><a href="/#trend" class="internal-link">服务器动态</a></li>
+                        <li><a href="/#events" class="internal-link">活动列表</a></li>
+                        <li><a href="/#features" class="internal-link">玩法特性一览</a></li>
+                        <li><a href="/#join" class="internal-link">加入服务器与服务器 QQ 群</a></li>
+                        <li><a href="tutorial" class="internal-link">教程中心</a></li>
+                        <li><a href="status" class="internal-link">服务器状态监控</a></li>
+                        <li><a href="banlist" class="internal-link">封神榜</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>友情外链</h3>
+                    <div class="friend-links-grid">
+                        <a href="https://eqad.fun" class="friend-link-card" target="_blank">
+                            <div class="friend-link-icon">
+                                <img src="resources/images/eqad.webp" alt="eqad">
+                            </div>
+                            <div class="friend-link-content">
+                                <h4>EQAD</h4>
+                                <p>一个由马迷们合作开设的Minecraft服务器</p>
+                            </div>
+                        </a>
+                        <a href="https://raku404.com" class="friend-link-card" target="_blank">
+                            <div class="friend-link-icon">
+                                <img src="resources/images/raku.webp" alt="raku">
+                            </div>
+                            <div class="friend-link-content">
+                                <h4>羽梦千景</h4>
+                                <p>这里是千景的小站</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright &copy; <a href="https://github.com/zxaBinbina/YouzaiWorldWebNew" class="external-link"
+                        style="text-decoration: none;" target="_blank">Youzai World Team</a><br>本站已正常运行 <span
+                        id="uptime-counter">1 天 1 时 45 分 14 秒</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 点击特效元素 -->
+    <div class="click-effect"></div>
+
+    <script src="resources/scripts/script.js"></script>
+    <script src="resources/scripts/tutorial_home.js"></script>
+</body>
+</html>
