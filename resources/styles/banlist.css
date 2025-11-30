@@ -276,4 +276,34 @@
         font-size: 0.8rem;
         padding: 3px 8px;
     }
+    
+    .penalty-filters {
+        padding: 15px; /* 减少内边距 */
+    }
+    
+    .filter-row {
+        grid-template-columns: 1fr;
+        gap: 12px; /* 减少间距 */
+    }
+    
+    .filter-group {
+        width: 100%; /* 确保占据完整宽度 */
+    }
+    
+    .filter-group input,
+    .filter-group select {
+        width: 100%; /* 输入框和下拉框占据完整宽度 */
+        max-width: 100%; /* 防止溢出 */
+        box-sizing: border-box; /* 确保padding和border包含在宽度内 */
+    }
+    
+    .filter-actions {
+        justify-content: center; /* 居中重置按钮 */
+        margin-top: 20px;
+    }
+    
+    .filter-actions .btn-secondary {
+        width: 100%; /* 重置按钮也占据完整宽度 */
+        max-width: 200px; /* 但限制最大宽度 */
+    }
 }

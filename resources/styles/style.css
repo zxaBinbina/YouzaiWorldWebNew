@@ -333,7 +333,7 @@ body {
 /* 图片展示区域 */
 .gallery {
     padding: 100px 0;
-    background-color: var(--primary-color);
+    background-color: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
 }
 
 .gallery h2,
@@ -551,7 +551,7 @@ body {
 /* 活动列表区域 */
 .events {
     padding: 100px 0;
-    background-color: var(--primary-color);
+    background-color: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
 }
 
 .events-list {

@@ -1,0 +1,253 @@
+/* 上月玩家之最样式 */
+.ranking {
+    padding: 100px 0;
+    background-color: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
+    position: relative;
+}
+
+.ranking h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.ranking-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+.ranking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.ranking-category {
+    background: linear-gradient(145deg, #ffffff, #f8fdfa);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 
+        0 10px 30px rgba(52, 94, 84, 0.08),
+        0 4px 12px rgba(52, 94, 84, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(168, 230, 207, 0.3);
+}
+
+.ranking-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 35px rgba(52, 94, 84, 0.12),
+        0 5px 15px rgba(52, 94, 84, 0.08);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(168, 230, 207, 0.5);
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.category-header h3 {
+    color: var(--dark-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.ranking-players {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background-color: rgba(168, 230, 207, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.player-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    transition: all 0.3s ease;
+}
+
+.player-item.gold::before {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.player-item.silver::before {
+    background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+}
+
+.player-item.bronze::before {
+    background: linear-gradient(135deg, #CD7F32, #8B4513);
+}
+
+.player-rank {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.player-item.gold .player-rank {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.player-item.silver .player-rank {
+    background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.player-item.bronze .player-rank {
+    background: linear-gradient(135deg, #CD7F32, #8B4513);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.player-name {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 2px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.player-stats {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.ranking-note {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(168, 230, 207, 0.2);
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ranking-note p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* 移动端响应式设计 */
+@media (max-width: 768px) {
+    .ranking {
+        padding: 80px 0;
+    }
+
+    .ranking h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .ranking-intro {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+
+    .ranking-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .ranking-category {
+        padding: 20px;
+        margin: 0 5px;
+    }
+
+    .category-header {
+        margin-bottom: 15px;
+    }
+
+    .category-icon {
+        width: 35px;
+        height: 35px;
+        margin-right: 12px;
+    }
+
+    .category-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .player-item {
+        padding: 10px 12px;
+    }
+
+    .player-rank {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+        margin-right: 10px;
+    }
+
+    .player-name {
+        font-size: 0.9rem;
+    }
+
+    .player-stats {
+        font-size: 0.75rem;
+    }
+
+    .ranking-note {
+        margin: 0 15px;
+        padding: 15px;
+    }
+
+    .ranking-note p {
+        font-size: 0.9rem;
+    }
+}
