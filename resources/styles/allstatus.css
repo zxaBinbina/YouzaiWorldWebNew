@@ -43,6 +43,28 @@
     opacity: 1;
 }
 
+/* 在线状态卡片边框强调色 */
+.status-node-card .status-node-status.status-online + * {
+    position: relative;
+}
+
+.status-node-card .status-node-status.status-online ~ *::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
+    border-radius: 4px 0 0 4px;
+}
+
+/* 加载状态动画 */
+.status-node-card.loading {
+    opacity: 0.8;
+    animation: cardLoading 5s infinite;
+}
+
 /* 节点头部 */
 .status-node-header {
     display: flex;
@@ -61,9 +83,16 @@
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    flex-wrap: wrap;
+    position: relative;
 }
 
+.status-node-title > * {
+    box-sizing: border-box;
+}
+
+/* 状态指示器 */
 .status-node-status {
     display: flex;
     align-items: center;
@@ -213,30 +242,15 @@
     animation: shimmer 2s infinite;
 }
 
-@keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    100% {
-        transform: translateX(400%);
-    }
-}
-
 /* 卡片内的刷新按钮 */
-.status-node-title {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
 .node-refresh-btn {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     border: none;
     border-radius: 50%;
     width: 36px;
     height: 36px;
+    min-width: 36px;
+    min-height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -248,7 +262,7 @@
     box-shadow: 
         0 4px 12px rgba(107, 179, 155, 0.25),
         0 2px 6px rgba(107, 179, 155, 0.2);
-    flex-shrink: 0; /* 添加这一行，防止按钮被压缩 */
+    flex-shrink: 0;
 }
 
 .node-refresh-btn:active {
@@ -264,7 +278,7 @@
     filter: brightness(0) invert(1);
     opacity: 0.9;
     transition: all 0.3s ease;
-    object-fit: contain; /* 添加这一行，确保图片保持比例 */
+    object-fit: contain;
 }
 
 .node-refresh-btn:disabled {
@@ -286,266 +300,24 @@
     opacity: 0.5;
 }
 
-/* 调整状态标题的间距和样式 */
-.status-node-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(168, 230, 207, 0.3);
-    position: relative;
-}
-
-.status-node-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap; /* 允许在非常小的屏幕上换行 */
-}
-
-/* 卡片整体的背景色和边框 */
-.status-node-card {
-    background: var(--light-text);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow:
-        0 15px 35px rgba(52, 94, 84, 0.1),
-        0 5px 15px rgba(52, 94, 84, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(168, 230, 207, 0.3);
-}
-
-.status-node-card:hover::before {
-    opacity: 1;
-}
-
-/* 在线状态卡片边框强调色 */
-.status-node-card .status-node-status.status-online + * {
-    position: relative;
-}
-
-.status-node-card .status-node-status.status-online ~ *::before {
+.node-refresh-btn::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
-    border-radius: 4px 0 0 4px;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    z-index: 1;
 }
 
-/* 移动端适配 */
-@media (max-width: 768px) {
-    .server-status-page {
-        padding: 80px 0;
-    }
-    
-    .server-status-page h2 {
-        font-size: 2.2rem;
-    }
-    
-    .status-node-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
-    }
-    
-    .status-node-card {
-        padding: 25px 20px;
-        border-radius: 15px;
-    }
-    
-    .status-node-header {
-        flex-direction: row; /* 保持水平布局，而不是改为 column */
-        align-items: center; /* 居中对齐 */
-        gap: 10px; /* 减小间距 */
-        margin-bottom: 20px;
-    }
-    
-    .status-node-title {
-        font-size: 1.5rem;
-        gap: 10px;
-        flex: 1; /* 让标题区域占据剩余空间 */
-        min-width: 0; /* 允许标题区域缩小 */
-    }
-    
-    .node-refresh-btn {
-        width: 36px; /* 保持与桌面端相同或适当大小 */
-        height: 36px;
-        flex-shrink: 0; /* 防止按钮被压缩 */
-    }
-    
-    .node-refresh-btn img {
-        width: 18px;
-        height: 18px;
-        object-fit: contain; /* 确保图片保持比例 */
-    }
-    
-    .status-node-status {
-        font-size: 0.85rem;
-        padding: 6px 12px;
-        flex-shrink: 0; /* 防止状态标签被压缩 */
-    }
-    
-    .status-info-items {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-    
-    .status-info-section {
-        padding: 15px;
-    }
-    
-    .status-info-item {
-        padding: 10px;
-    }
+/* 加载状态下的刷新按钮动画 */
+.status-node-card.loading .node-refresh-btn {
+    animation: pulse 1.5s infinite;
 }
 
-/* 加载状态动画 */
-.status-node-card.loading {
-    opacity: 0.8;
-    animation: cardLoading 5s infinite;
-}
-
-@keyframes cardLoading {
-
-    0%,
-    100% {
-        opacity: 0.8;
-    }
-
-    50% {
-        opacity: 0.9;
-    }
-}
-
-.status-loading-text {
-    background: linear-gradient(90deg, var(--secondary-color) 25%, var(--primary-color) 50%, var(--secondary-color) 75%);
-    background-size: 200% 100%;
-    animation: loadingShimmer 1.5s infinite;
-    border-radius: 4px;
-    height: 16px;
-}
-
-.status-loading-bar {
-    background: linear-gradient(90deg, var(--secondary-color) 25%, var(--primary-color) 50%, var(--secondary-color) 75%);
-    background-size: 200% 100%;
-    animation: loadingShimmer 1.5s infinite;
-    border-radius: 10px;
-    height: 8px;
-}
-
-@keyframes loadingShimmer {
-    0% {
-        background-position: 200% 0;
-    }
-
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-/* 脉冲动画 */
-@keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
-}
-
-/* 空状态提示 */
-.status-empty {
-    text-align: center;
-    padding: 80px 20px;
-    color: var(--text-color);
-    grid-column: 1 / -1;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-}
-
-.status-empty h3 {
-    color: var(--dark-color);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
-
-.status-empty p {
-    opacity: 0.8;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-}
-
-/* 移动端适配 */
-@media (max-width: 768px) {
-    .server-status-page {
-        padding: 80px 0;
-    }
-
-    .server-status-page h2 {
-        font-size: 2.2rem;
-    }
-
-    .status-node-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
-    }
-
-    .status-node-card {
-        padding: 25px 20px;
-        border-radius: 15px;
-    }
-
-    .status-node-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-
-    .status-node-title {
-        font-size: 1.5rem;
-    }
-
-    .status-info-items {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .status-info-section {
-        padding: 15px;
-    }
-
-    .status-info-item {
-        padding: 10px;
-    }
-
-    .status-refresh-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-    }
-
-    .status-refresh-btn svg {
-        width: 20px;
-        height: 20px;
-    }
+.status-node-card.loading .node-refresh-btn img {
+    animation: spin 1.5s linear infinite;
 }
 
 /* 统计数据展示 */
@@ -578,46 +350,7 @@
     opacity: 0.8;
 }
 
-.node-refresh-btn {
-    min-width: 36px; /* 设置最小宽度 */
-    min-height: 36px; /* 设置最小高度 */
-}
-
-/* 确保图片在按钮内正确居中 */
-.node-refresh-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-/* 加载状态下的刷新按钮动画 */
-.status-node-card.loading .node-refresh-btn {
-    animation: pulse 1.5s infinite;
-}
-
-.status-node-card.loading .node-refresh-btn img {
-    animation: spin 1.5s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.status-node-title > * {
-    box-sizing: border-box;
-}
-
-/* 游戏服务器状态 - 作为系统资源下面的一个类 */
+/* 游戏服务器状态 */
 .status-minecraft-section {
     background: rgba(168, 230, 207, 0.1);
     border-radius: 15px;
@@ -711,6 +444,8 @@
 .minecraft-player-count {
     color: var(--accent-color);
     font-size: 1.2rem;
+    display: inline-block;
+    animation: playerCountPulse 2s infinite;
 }
 
 .minecraft-version {
@@ -739,7 +474,6 @@
     vertical-align: middle;
 }
 
-/* 为游戏服务器状态的值元素添加特定样式 */
 .minecraft-info-item .minecraft-info-value.status-loading-text {
     width: 100%;
     height: 1.5rem;
@@ -747,7 +481,65 @@
     display: block;
 }
 
-/* 加载动画 */
+/* 空状态提示 */
+.status-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-color);
+    grid-column: 1 / -1;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.status-empty h3 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.status-empty p {
+    opacity: 0.8;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* 加载状态动画 */
+.status-loading-text {
+    background: linear-gradient(90deg, var(--secondary-color) 25%, var(--primary-color) 50%, var(--secondary-color) 75%);
+    background-size: 200% 100%;
+    animation: loadingShimmer 1.5s infinite;
+    border-radius: 4px;
+    height: 16px;
+}
+
+.status-loading-bar {
+    background: linear-gradient(90deg, var(--secondary-color) 25%, var(--primary-color) 50%, var(--secondary-color) 75%);
+    background-size: 200% 100%;
+    animation: loadingShimmer 1.5s infinite;
+    border-radius: 10px;
+    height: 8px;
+}
+
+/* 动画定义 */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(400%);
+    }
+}
+
+@keyframes cardLoading {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
 @keyframes loadingShimmer {
     0% {
         background-position: 200% 0;
@@ -766,7 +558,15 @@
     }
 }
 
-/* 玩家在线状态动画 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes playerCountPulse {
     0%, 100% {
         transform: scale(1);
@@ -776,13 +576,85 @@
     }
 }
 
-.minecraft-player-count {
-    display: inline-block;
-    animation: playerCountPulse 2s infinite;
-}
-
 /* 移动端适配 */
 @media (max-width: 768px) {
+    .server-status-page {
+        padding: 80px 0;
+    }
+    
+    .server-status-page h2 {
+        font-size: 2.2rem;
+    }
+    
+    .status-node-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .status-node-card {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+    
+    .status-node-header {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .status-node-title {
+        font-size: 1.5rem;
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .node-refresh-btn {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+    
+    .node-refresh-btn img {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+    
+    .status-node-status {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        flex-shrink: 0;
+    }
+    
+    .status-info-items {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .status-info-section {
+        padding: 15px;
+    }
+    
+    .status-info-item {
+        padding: 10px;
+    }
+    
+    .status-refresh-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .status-refresh-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* 游戏服务器状态移动端适配 */
     .status-minecraft-section {
         padding: 15px;
         margin-top: 10px;

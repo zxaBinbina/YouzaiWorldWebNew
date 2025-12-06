@@ -1,9 +1,10 @@
-/* 教程区域样式 */
+/* ==================== 教程区域主样式 ==================== */
 .tutorials {
     padding: 80px 0;
     background-color: #f9fdfb;
 }
 
+/* 教程介绍区域 */
 .tutorial-intro {
     text-align: center;
     margin-bottom: 50px;
@@ -16,13 +17,14 @@
     margin: 0 auto;
 }
 
-/* 搜索和筛选区域样式 */
+/* ==================== 搜索和筛选区域 ==================== */
 .search-section {
     max-width: 600px;
     margin: 0 auto 40px;
     text-align: center;
 }
 
+/* 搜索容器 */
 .search-container {
     position: relative;
     margin-bottom: 15px;
@@ -54,7 +56,7 @@
     pointer-events: none;
 }
 
-/* 分类筛选器样式 */
+/* 分类筛选器 */
 .category-filter-container {
     margin-bottom: 15px;
 }
@@ -87,7 +89,7 @@
     font-size: 0.9rem;
 }
 
-/* 教程列表样式 */
+/* ==================== 教程列表和卡片 ==================== */
 .tutorial-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -111,6 +113,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* 教程图片区域 */
 .tutorial-image {
     height: 160px;
     overflow: hidden;
@@ -124,7 +127,7 @@
     transition: transform 0.5s ease;
 }
 
-/* 置顶标记样式 */
+/* 置顶标记 */
 .sticky-badge {
     position: absolute;
     top: 10px;
@@ -140,6 +143,7 @@
     letter-spacing: 1px;
 }
 
+/* 教程内容 */
 .tutorial-content {
     padding: 20px;
     flex: 1;
@@ -159,6 +163,7 @@
     flex: 1;
 }
 
+/* 教程元信息 */
 .tutorial-meta {
     display: flex;
     justify-content: space-between;
@@ -168,7 +173,7 @@
     color: #666;
 }
 
-/* 多分类标签样式 */
+/* 分类标签 */
 .tutorial-categories {
     display: flex;
     flex-wrap: wrap;
@@ -184,7 +189,7 @@
     white-space: nowrap;
 }
 
-/* 空状态样式 */
+/* ==================== 空状态样式 ==================== */
 .empty-state {
     text-align: center;
     padding: 40px 20px;
@@ -200,7 +205,26 @@
     color: var(--text-color);
 }
 
-/* 移动端适配 */
+/* ==================== 桌面端布局优化 ==================== */
+@media (min-width: 769px) {
+    .filter-container {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .search-container {
+        flex: 2;
+        margin-bottom: 0;
+    }
+    
+    .category-filter-container {
+        flex: 1;
+        margin-bottom: 0;
+    }
+}
+
+/* ==================== 移动端适配 ==================== */
 @media (max-width: 768px) {
     .tutorials {
         padding: 60px 0;
@@ -242,24 +266,5 @@
     
     .tutorial-categories {
         width: 100%;
-    }
-}
-
-/* 桌面端布局优化 */
-@media (min-width: 769px) {
-    .filter-container {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-    }
-    
-    .search-container {
-        flex: 2;
-        margin-bottom: 0;
-    }
-    
-    .category-filter-container {
-        flex: 1;
-        margin-bottom: 0;
     }
 }
