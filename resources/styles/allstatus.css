@@ -248,6 +248,7 @@
     box-shadow: 
         0 4px 12px rgba(107, 179, 155, 0.25),
         0 2px 6px rgba(107, 179, 155, 0.2);
+    flex-shrink: 0; /* 添加这一行，防止按钮被压缩 */
 }
 
 .node-refresh-btn:active {
@@ -260,14 +261,10 @@
 .node-refresh-btn img {
     width: 18px;
     height: 18px;
-    filter: brightness(0) invert(1); /* 使图标变白色 */
+    filter: brightness(0) invert(1);
     opacity: 0.9;
     transition: all 0.3s ease;
-}
-
-.node-refresh-btn:hover img {
-    opacity: 1;
-    filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    object-fit: contain; /* 添加这一行，确保图片保持比例 */
 }
 
 .node-refresh-btn:disabled {
@@ -277,26 +274,16 @@
     transform: none;
 }
 
+.node-refresh-btn:disabled:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    transform: none;
+    box-shadow: 
+        0 4px 12px rgba(107, 179, 155, 0.25),
+        0 2px 6px rgba(107, 179, 155, 0.2);
+}
+
 .node-refresh-btn:disabled img {
     opacity: 0.5;
-}
-
-/* 加载状态下的刷新按钮动画 */
-.status-node-card.loading .node-refresh-btn {
-    animation: pulse 1.5s infinite;
-}
-
-.status-node-card.loading .node-refresh-btn img {
-    animation: spin 1.5s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
 }
 
 /* 调整状态标题的间距和样式 */
@@ -318,6 +305,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    flex-wrap: wrap; /* 允许在非常小的屏幕上换行 */
 }
 
 /* 卡片整体的背景色和边框 */
@@ -357,24 +345,68 @@
 
 /* 移动端适配 */
 @media (max-width: 768px) {
-    .status-node-title {
-        font-size: 1.5rem;
-        gap: 10px;
+    .server-status-page {
+        padding: 80px 0;
     }
     
-    .node-refresh-btn {
-        width: 32px;
-        height: 32px;
+    .server-status-page h2 {
+        font-size: 2.2rem;
     }
     
-    .node-refresh-btn img {
-        width: 16px;
-        height: 16px;
+    .status-node-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
     }
     
     .status-node-card {
         padding: 25px 20px;
         border-radius: 15px;
+    }
+    
+    .status-node-header {
+        flex-direction: row; /* 保持水平布局，而不是改为 column */
+        align-items: center; /* 居中对齐 */
+        gap: 10px; /* 减小间距 */
+        margin-bottom: 20px;
+    }
+    
+    .status-node-title {
+        font-size: 1.5rem;
+        gap: 10px;
+        flex: 1; /* 让标题区域占据剩余空间 */
+        min-width: 0; /* 允许标题区域缩小 */
+    }
+    
+    .node-refresh-btn {
+        width: 36px; /* 保持与桌面端相同或适当大小 */
+        height: 36px;
+        flex-shrink: 0; /* 防止按钮被压缩 */
+    }
+    
+    .node-refresh-btn img {
+        width: 18px;
+        height: 18px;
+        object-fit: contain; /* 确保图片保持比例 */
+    }
+    
+    .status-node-status {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        flex-shrink: 0; /* 防止状态标签被压缩 */
+    }
+    
+    .status-info-items {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .status-info-section {
+        padding: 15px;
+    }
+    
+    .status-info-item {
+        padding: 10px;
     }
 }
 
@@ -544,4 +576,43 @@
     font-size: 0.9rem;
     color: var(--text-color);
     opacity: 0.8;
+}
+
+.node-refresh-btn {
+    min-width: 36px; /* 设置最小宽度 */
+    min-height: 36px; /* 设置最小高度 */
+}
+
+/* 确保图片在按钮内正确居中 */
+.node-refresh-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* 加载状态下的刷新按钮动画 */
+.status-node-card.loading .node-refresh-btn {
+    animation: pulse 1.5s infinite;
+}
+
+.status-node-card.loading .node-refresh-btn img {
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.status-node-title > * {
+    box-sizing: border-box;
 }
